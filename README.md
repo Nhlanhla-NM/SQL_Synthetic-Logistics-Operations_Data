@@ -14,13 +14,8 @@ Analyse database and answer the following questions:
 # Executive Summary
 # Overview of Findings
 --Which drivers have the highest on-time delivery rate?
-
---Result of query showing the top 2 employees being Thomas Wilson and Mary Wilson
-
 SELECT DISTINCT first_name||' '||last_name as Full_Name ,Sum(drivers_Monthly_Metrics.on_time_delivery_rate) as on_time_delivery_rate FROM drivers
-
 INNER JOIN drivers_Monthly_Metrics on drivers.driver_id=drivers_Monthly_Metrics.driver_id
-
 GROUP by Full_name
-
 ORDER BY on_time_delivery_rate DESC;
+--Result of query showing the top 2 employees being Thomas Wilson and Mary Wilson
