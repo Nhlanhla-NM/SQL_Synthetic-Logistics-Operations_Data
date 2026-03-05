@@ -15,6 +15,7 @@ Analyse database and answer the following questions:
 # Overview of Findings
 --Which drivers have the highest on-time delivery rate?
 SELECT DISTINCT first_name||' '||last_name as Full_Name ,Sum(drivers_Monthly_Metrics.on_time_delivery_rate) as on_time_delivery_rate FROM drivers
+
 INNER JOIN drivers_Monthly_Metrics on drivers.driver_id=drivers_Monthly_Metrics.driver_id
 GROUP by Full_name
 ORDER BY on_time_delivery_rate DESC;
