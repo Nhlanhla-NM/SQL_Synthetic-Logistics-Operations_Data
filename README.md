@@ -13,11 +13,28 @@ Analyse database and answer the following questions:
 
 # Executive Summary
 # Overview of Findings
-'''SQL
--Which drivers have the highest on-time delivery rate?
+```sql
+--Which drivers have the highest on-time delivery rate?
 SELECT DISTINCT first_name||' '||last_name as Full_Name ,Sum(drivers_Monthly_Metrics.on_time_delivery_rate) as on_time_delivery_rate FROM drivers
 INNER JOIN drivers_Monthly_Metrics on drivers.driver_id=drivers_Monthly_Metrics.driver_id
 GROUP by Full_name
 ORDER BY on_time_delivery_rate DESC;
-'''
--Result of query showing the top 2 employees being Thomas Wilson and Mary Wilson
+--Top 2 drivers with highest on-time delivery rate being Thomas Wilson and Mary Wilson
+```
+```sql
+--Which Drivers generate the highest revenue per mile?
+SELECT first_name||' '||last_name as full_name,drivers_Monthly_Metrics.total_miles as total_miles,drivers_Monthly_Metrics.total_revenue as total_revenue
+FROM drivers
+INNER JOIN drivers_Monthly_Metrics on drivers.driver_id=drivers_Monthly_Metrics.driver_id
+GROUP BY full_name
+ORDER BY total_miles DESC;
+--Top 2 drivers who generate the highest revenue per mile being Charles Hernandez and Linda Davis
+```
+```sql
+--Which drivers have the lowest fuel efficiency?
+SELECT first_name||' '||last_name AS Full_name,fuel_purchases.total_cost FROM drivers
+INNER JOIN fuel_purchases on drivers.driver_id=fuel_purchases.driver_id
+Group By full_name
+ORDER BY total_cost ASC;
+--Top 2 drivers with the lowest fuel efficiency being Robert Taylor and Thomas Martinez
+```
